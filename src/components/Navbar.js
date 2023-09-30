@@ -1,5 +1,4 @@
 import './Navbar.css';
-// import { BiCircle } from 'react-icons/bi';
 import { BsPersonCircle } from 'react-icons/bs';
 import { NavLink } from 'react-router-dom';
 
