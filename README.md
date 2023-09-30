@@ -67,6 +67,7 @@ This bookstore app is a comprehensive platform for organizing and managing your 
 - npm i -S prop-types
 - npm i -S react-router-dom
 - npm install react-icons --save
+- npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 
 
 ### Install & Dependencies
