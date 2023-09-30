@@ -63,6 +63,11 @@ This bookstore app is a comprehensive platform for organizing and managing your 
 - npm i -g
 - sudo apt install -g npm
 - npm init create-app .
+- npm install react-router-dom
+- npm i -S prop-types
+- npm i -S react-router-dom
+- npm install react-icons --save
+
 
 ### Install & Dependencies
 
