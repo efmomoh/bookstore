@@ -1,23 +1,28 @@
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
-import React from 'react';
-import Books from './components/Books';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  createRoutesFromElements,
+} from 'react-router-dom';
+
+import RootLayout from './components/Layouts/RootLayout';
+import Book from './components/Book';
 import Categories from './components/Categories';
-import Navbar from './components/Navbar';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route path="/" element={<Book />} />
+      <Route path="categories" element={<Categories />} />
+    </Route>,
+  ),
+);
 
 function App() {
   return (
-    <>
-      <h1 className="h1">ALL TIMES FAVORITE BOOKSTORE APP</h1>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={<Books title="The Hunger Games" author="Enssah F. Momoh" />}
-        />
-        <Route path="/categories" element={<Categories />} />
-      </Routes>
-    </>
+    <main className="App">
+      <RouterProvider router={router} />
+    </main>
   );
 }
 
