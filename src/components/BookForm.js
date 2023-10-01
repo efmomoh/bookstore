@@ -1,31 +1,26 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 
 const BookForm = ({ addBook }) => {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [category, setCategory] = useState('');
+  const titleRef = useRef();
+  const categoryRef = useRef();
+  const authorRef = useRef(); // Add a reference for the author input
 
   const submitBookHandler = (e) => {
     e.preventDefault();
+    const title = titleRef.current.value;
+    const category = categoryRef.current.value;
+    const author = authorRef.current.value; // Get the author from the input field
 
-    const newTitle = e.target.title.value;
-    const newCategory = e.target.category.value;
-
-    if (newTitle && author && newCategory) {
-      const newBook = {
-        id: Date.now(),
-        title: newTitle,
-        author,
-        category: newCategory,
-      };
-
-      addBook(newBook);
+    if (title && category && author) {
+      // Only add a book if all fields are filled out
+      addBook({ title, author, category });
     }
 
-    setTitle('');
-    setAuthor('');
-    setCategory('');
+    // Clear input fields
+    titleRef.current.value = '';
+    categoryRef.current.value = '';
+    authorRef.current.value = '';
   };
 
   return (
@@ -39,8 +34,7 @@ const BookForm = ({ addBook }) => {
                 type="text"
                 id="title"
                 placeholder="Book title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                ref={titleRef}
               />
             </label>
           </div>
@@ -49,26 +43,20 @@ const BookForm = ({ addBook }) => {
               <input
                 type="text"
                 id="author"
-                placeholder="Book author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                placeholder="Author"
+                ref={authorRef}
               />
             </label>
           </div>
           <div>
             <label htmlFor="category">
-              <select
-                id="category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                required
-              >
-                <option value="Category"> Category</option>
+              <select id="category" ref={categoryRef} required>
+                <option disabled selected value>
+                  Category
+                </option>
                 <option value="Action">Action</option>
                 <option value="Science Fiction">Science Fiction</option>
                 <option value="Economy">Economy</option>
-                <option value="Fiction">Fiction</option>
-                <option value="NonFiction">Nonfiction</option>
               </select>
             </label>
           </div>

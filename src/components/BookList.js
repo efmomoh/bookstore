@@ -20,6 +20,13 @@ const bookList = [
     chapter: 'CURRENT CHAPTER',
     percentage: '0%',
   },
+  {
+    category: 'Economy',
+    title: 'Capital in the Twenty-first Century',
+    author: 'Thomas Piketty',
+    chapter: 'CURRENT CHAPTER',
+    percentage: '80%',
+  },
 ];
 
 export default bookList;
