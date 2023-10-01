@@ -1,32 +1,40 @@
-const bookList = [
-  {
-    category: 'Action',
-    title: 'The Hunger Games',
-    author: 'Suzanne Collins',
-    chapter: 'Chapter 17',
-    percentage: '64%',
-  },
-  {
-    category: 'Science Fiction',
-    title: 'Dune',
-    author: 'Fran Herbert',
-    chapter: 'Chapter 3: A lesson Learned',
-    percentage: '8%',
-  },
-  {
-    category: 'Economy',
-    title: 'Capital in the Twenty-first Century',
-    author: 'Thomas Piketty',
-    chapter: 'CURRENT CHAPTER',
-    percentage: '0%',
-  },
-  {
-    category: 'Economy',
-    title: 'Capital in the Twenty-first Century',
-    author: 'Thomas Piketty',
-    chapter: 'CURRENT CHAPTER',
-    percentage: '80%',
-  },
-];
+import React from 'react';
+import Book from './Book';
+import BookForm from './BookForm';
 
-export default bookList;
+const BookList = () => {
+  const books = [
+    {
+      id: 1,
+      title: 'The Hunger Games',
+      author: 'Suzanne Collins',
+    },
+    {
+      id: 2,
+      title: 'Dune',
+      author: 'Fran Herbert',
+    },
+    {
+      id: 3,
+      title: 'Capital in the Twenty-first Century',
+      author: 'Thomas Piketty',
+    },
+  ];
+
+  return (
+    <div>
+      {books.map((book) => (
+        <Book
+          key={book.id}
+          id={book.id}
+          title={book.title}
+          author={book.author}
+          category={book.category}
+        />
+      ))}
+      <BookForm />
+    </div>
+  );
+};
+
+export default BookList;

@@ -1,3 +1,5 @@
-export default function Categories() {
-  return <div />;
-}
+import React from 'react';
+
+const Categories = () => <div />;
+
+export default Categories;

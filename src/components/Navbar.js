@@ -1,24 +1,16 @@
-import './Navbar.css';
-import { BsPersonCircle } from 'react-icons/bs';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => (
-  <nav className="nav">
-    <h1 className="head">Bookstore CMS</h1>
-    <ul>
-      <li>
-        <NavLink to="/">BOOKS</NavLink>
-      </li>
-      <span />
-      <li>
-        <NavLink to="/categories">CATEGORIES</NavLink>
-      </li>
-      <span />
-    </ul>
-    <div className="login">
-      <BsPersonCircle />
-    </div>
-  </nav>
+  <div>
+    <header>
+      <h1>Bookstore</h1>
+      <nav>
+        <Link to="/">Books</Link>
+        <Link to="categories">Categories</Link>
+      </nav>
+    </header>
+  </div>
 );
 
 export default Navbar;
