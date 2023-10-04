@@ -63,18 +63,18 @@ This bookstore app is a comprehensive platform for organizing and managing your 
 - npm i -g
 - sudo apt install -g npm
 - npm init create-app .
-- npm install react-router-dom
-- npm i -S prop-types
-- npm i -S react-router-dom
-- npm install react-icons --save
-- npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
-
 
 ### Install & Dependencies
 
 - Install npm (node pakage manager)
 - npm i -S big.js
 - [npm i big.js](https://www.npmjs.com/package/big.js)
+- npm install react-router-dom
+- npm i -S prop-types
+- npm i -S react-router-dom
+- npm install react-icons --save
+- npm install --save @fortawesome/react-fontawesome 
+- Add Redux Toolkit (npm install react-redux @reduxjs/toolkit).
 
 ### Usage
 
