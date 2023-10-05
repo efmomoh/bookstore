@@ -1,0 +1,11 @@
+.book-container {
+  width: 100%;
+  padding: 0 12px 0 15px;
+  height: auto;
+  margin: 0 0 1rem 2rem;
+  margin-inline: 0.5rem;
+}
+
+.book-container li {
+  list-style-type: none;
+}
