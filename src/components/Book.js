@@ -2,28 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
 
-const Book = ({
-  id, title, author, category,
-}) => (
-  <section className="book-container">
-    <li>
-      <div>
-        <h3>{title}</h3>
-        <p>{author}</p>
-        <p>{category}</p>
-        <button type="button" id={id}>
-          delete
+function Book({ book, deleteBook }) {
+  return (
+    <div>
+      <li>
+        <div>
+          <h3>title:</h3>
+          {book.title}
+        </div>
+        <div>
+          <p>author:</p>
+          {book.author}
+        </div>
+        <div>
+          <p>category:</p>
+          {book.category}
+        </div>
+        <button type="button" onClick={() => deleteBook(book.id)}>
+          Delete
         </button>
-      </div>
-    </li>
-  </section>
-);
-
-export default Book;
+      </li>
+    </div>
+  );
+}
 
 Book.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  book: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+  }).isRequired,
+  deleteBook: PropTypes.func.isRequired,
 };
+
+export default Book;
