@@ -75,7 +75,13 @@ This bookstore app is a comprehensive platform for organizing and managing your 
 - npm install react-icons --save
 - npm install --save @fortawesome/react-fontawesome 
 - Add Redux Toolkit (npm install react-redux @reduxjs/toolkit).
--  use  npm install uuid   for universal unique identifier id project
+- use npm install uuid   for universal unique identifier id project
+- npm install redux-thunk
+- npm install axios
+- npm i -S axios
+- npm install axios --save
+
+
 
 ### Usage
 
