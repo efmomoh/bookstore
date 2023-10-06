@@ -1,39 +1,89 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const initialState = [
-  {
-    item_id: 'item1',
-    title: 'The Great Gatsby',
-    author: 'John Smith',
-    category: 'Fiction',
+const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/brP8qnqWTkVVuPtnhwZy/books';
+
+const initialState = {
+  books: [],
+  isLoading: false,
+};
+
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
+  try {
+    const response = await axios.get(baseURL);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to fetch books');
+  }
+});
+
+export const addBook = createAsyncThunk('books/addBook', async (newBook) => {
+  try {
+    await axios.post(baseURL, newBook);
+    return newBook;
+  } catch (error) {
+    throw new Error('Error posting book:', error.response.data);
+  }
+});
+
+export const removeBook = createAsyncThunk(
+  'books/removeBook',
+  async (itemId) => {
+    try {
+      await axios.delete(`${baseURL}/${itemId}`);
+      return itemId;
+    } catch (error) {
+      throw new Error('Error removing book:', error);
+    }
   },
-  {
-    item_id: 'item2',
-    title: 'Anna Karenina',
-    author: 'Leo Tolstoy',
-    category: 'Fiction',
-  },
-  {
-    item_id: 'item3',
-    title: 'The Selfish Gene',
-    author: 'Richard Dawkins',
-    category: 'Nonfiction',
-  },
-];
+);
 
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {
-    addBook: (state, action) => {
-      state.push(action.payload);
-    },
-    removeBook: (state, action) => {
-      const idToRemove = action.id;
-      return state.filter((book) => book.id !== idToRemove);
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBooks.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchBooks.fulfilled, (state, action) => {
+        const booksData = action.payload;
+        const booksArray = Object.keys(booksData).map((itemId) => ({
+          itemId,
+          ...booksData[itemId][0],
+        }));
+        state.isLoading = false;
+        state.books = booksArray;
+      })
+      .addCase(fetchBooks.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(addBook.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addBook.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const newBook = action.payload;
+        state.books.push(newBook);
+      })
+      .addCase(addBook.rejected, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(removeBook.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(removeBook.fulfilled, (state, action) => {
+        const itemIdToRemove = action.payload;
+        state.isLoading = false;
+        state.books = state.books.filter(
+          (book) => book.itemId !== itemIdToRemove,
+        );
+      })
+      .addCase(removeBook.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 
-export const { addBook, removeBook } = booksSlice.actions;
 export default booksSlice.reducer;

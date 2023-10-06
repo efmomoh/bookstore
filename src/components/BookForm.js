@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/booksSlice';
+
 import './BookForm.css';
 
 const BookForm = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('');
-
+  const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (!title || !author || !category) {
+      setErrorMessage('Please enter Title, Author and Category.');
+
+      return;
+    }
     const newBook = {
-      id: uuidv4(),
+      item_id: uuidv4(),
       title,
       author,
       category,
@@ -24,9 +31,10 @@ const BookForm = () => {
     setAuthor('');
     setCategory('');
   };
+
   return (
     <div className="form-container">
-      <h2 className="header2">Add New Book</h2>
+      <h2 className="eader2">Add New Book</h2>
       <form className="form">
         <input
           type="text"
@@ -49,7 +57,10 @@ const BookForm = () => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
-        <button type="button" id="add-new-book" onClick={submitHandler}>
+        {errorMessage && (
+          <div className="text-danger error-message">{errorMessage}</div>
+        )}
+        <button type="submit" id="add-new-book" onClick={submitHandler}>
           Add Book
         </button>
       </form>
