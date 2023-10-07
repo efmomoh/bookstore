@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/booksSlice';
 
-import './BookForm.css';
+import './Styles/BookForm.css';
 
 const BookForm = () => {
   const [title, setTitle] = useState('');
@@ -57,13 +57,14 @@ const BookForm = () => {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
-        {errorMessage && (
-          <div className="text-danger error-message">{errorMessage}</div>
-        )}
+
         <button type="submit" id="add-new-book" onClick={submitHandler}>
           Add Book
         </button>
       </form>
+      {errorMessage && (
+        <div className="text-danger error-message">{errorMessage}</div>
+      )}
     </div>
   );
 };
