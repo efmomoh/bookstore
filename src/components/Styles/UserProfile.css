@@ -1,11 +1,6 @@
 .user {
-  border: 1px solid rgb(209, 203, 203);
   border-radius: 50%;
   padding: 0.4rem 0.4rem;
-}
-
-.logo {
-  color: var(--blue-primary);
 }
 
 @media (max-width: 768px) {
