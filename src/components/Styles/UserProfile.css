@@ -1,0 +1,11 @@
+.user {
+  border-radius: 50%;
+  padding: 0.4rem 0.4rem;
+}
+
+@media (max-width: 768px) {
+  .user {
+    display: flex;
+    flex-direction: column;
+  }
+}

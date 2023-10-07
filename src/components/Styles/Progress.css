@@ -1,0 +1,26 @@
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-right: 2px solid var(--gray-three);
+  padding-right: 5rem;
+}
+
+.progress h2 {
+  font-size: 2rem;
+  color: #000;
+  font-weight: 300;
+}
+
+.progress p {
+  font-size: 1rem;
+  color: var(--gray-two);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
