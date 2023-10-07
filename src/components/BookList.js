@@ -4,7 +4,7 @@ import { fetchBooks, removeBook } from '../redux/books/booksSlice';
 import Book from './Book';
 import BookForm from './BookForm';
 
-const BookList = () => {
+const Booklist = () => {
   const books = useSelector((state) => state.books.books);
   const dispatch = useDispatch();
 
@@ -13,11 +13,11 @@ const BookList = () => {
   }, [dispatch]);
 
   const deleteHandler = (itemId) => {
-    dispatch(removeBook({ itemId }));
+    dispatch(removeBook(itemId));
   };
 
   return (
-    <div>
+    <>
       {books.map((book) => (
         <Book
           key={book.itemId}
@@ -26,8 +26,8 @@ const BookList = () => {
         />
       ))}
       <BookForm />
-    </div>
+    </>
   );
 };
 
-export default BookList;
+export default Booklist;
