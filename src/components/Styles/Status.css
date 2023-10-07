@@ -1,0 +1,14 @@
+.status-container {
+  display: flex;
+  gap: 5rem;
+  padding: 1.68rem;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .status-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}

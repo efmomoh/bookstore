@@ -1,0 +1,42 @@
+.chapter {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 3rem;
+}
+
+.chapter p {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
+}
+
+.chapter-title {
+  color: var(--gray-two);
+  font-size: 0.815rem;
+}
+
+.chapter button {
+  background-color: #6070ff;
+  color: #fff;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-family: 'Roboto Slab', serif;
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s;
+  margin-top: 1.5rem;
+}
+
+.chapter button:hover {
+  filter: brightness(0.9);
+  background-color: rgb(8, 219, 22);
+}
+
+@media (max-width: 768px) {
+  .chapter {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,44 @@
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+h1 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  font-stretch: normal;
+  color: #6070ff;
+  margin-left: -3rem;
+}
+
+ul {
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+}
+
+ul li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.active {
+  opacity: 0.5;
+  color: grey;
+}
+
+ul li:last-child a {
+  color: var(--gray-two);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    margin-left: -6.5rem;
+  }
+}

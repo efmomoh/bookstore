@@ -1,0 +1,38 @@
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-right: 2px solid var(--gray-three);
+  padding-right: 5rem;
+}
+
+.oval {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 50%;
+  border-top-color: #6070ff;
+  border-right-color: #6070ff;
+  border-bottom-color: #6070ff;
+  border-left-color: gray;
+}
+
+.progress h2 {
+  font-size: 2rem;
+  color: #000;
+  font-weight: 300;
+}
+
+.progress p {
+  font-size: 1rem;
+  color: var(--gray-two);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
