@@ -80,6 +80,10 @@ This bookstore app is a comprehensive platform for organizing and managing your 
 - npm install axios
 - npm i -S axios
 - npm install axios --save
+- npm install react-icons --save
+- npm install @react-icons/all-files --save
+- npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+
 
 
 
